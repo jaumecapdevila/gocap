@@ -8,6 +8,11 @@ const (
 	COMBINATION string = "combination"
 )
 
+// Calculator defines the contract to calculate an operation
+type Calculator interface {
+	Calculate(*Operation) (int, error)
+}
+
 // Operation model
 type Operation struct {
 	Type       string
