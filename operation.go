@@ -16,27 +16,27 @@ type Calculator interface {
 // Operation model
 type Operation struct {
 	Type       string
-	K          uint
-	N          uint
+	N          int
+	R          int
 	Repetition bool
 }
 
 // NewCombination constructor
-func NewCombination(k uint, n uint, withRepetition bool) *Operation {
+func NewCombination(n int, r int, withRepetition bool) *Operation {
 	return &Operation{
 		Type:       COMBINATION,
-		K:          k,
 		N:          n,
+		R:          r,
 		Repetition: withRepetition,
 	}
 }
 
 // NewPermutation constructor
-func NewPermutation(k uint, n uint, withRepetition bool) *Operation {
+func NewPermutation(n int, r int, withRepetition bool) *Operation {
 	return &Operation{
 		Type:       PERMUTATION,
-		K:          k,
 		N:          n,
+		R:          r,
 		Repetition: withRepetition,
 	}
 }
