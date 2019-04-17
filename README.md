@@ -21,7 +21,7 @@ This constructor receives three parameters:
 
 1. N: the number of different types
 2. R: the number of types to choose
-3. Repetition: Indicates if is possible or not to repeat a type
+3. Repetition: Indicates if its possible or not to repeat a type
 
 Now, you can use the `CombinationCalculator` and the `PermutationCalculator` to get the result of the operation:
 
