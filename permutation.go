@@ -1,7 +1,6 @@
 package gocap
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -9,20 +8,16 @@ import (
 type PermutationCalculator struct{}
 
 // Calculate the permutation for the given inputs
-func (c *PermutationCalculator) Calculate(operation *Operation) (int, error) {
-	if operation.Type != PERMUTATION {
-		return 0, fmt.Errorf("Invalid operation")
-	}
-
+func (c *PermutationCalculator) Calculate(operation *Operation) int {
 	if operation.N == 0 && operation.R == 0 {
-		return 0, nil
+		return 0
 	}
 
 	if operation.Repetition {
-		return c.withRepetition(operation.N, operation.R), nil
+		return c.withRepetition(operation.N, operation.R)
 	}
 
-	return c.withoutRepetition(operation.N, operation.R), nil
+	return c.withoutRepetition(operation.N, operation.R)
 }
 
 func (c *PermutationCalculator) withoutRepetition(n int, r int) int {

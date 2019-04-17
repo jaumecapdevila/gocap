@@ -54,7 +54,7 @@ func TestCombinationWithoutRepetition(t *testing.T) {
 
 	for _, item := range combinations {
 		operation := gocap.NewCombination(item.n, item.r, false)
-		result, _ := calculator.Calculate(operation)
+		result := calculator.Calculate(operation)
 		if result != item.result {
 			t.Errorf(miscalculation, "Combitaion", item.n, item.r, item.result, result)
 		}
@@ -67,7 +67,7 @@ func TestCombinationWithRepetition(t *testing.T) {
 
 	for _, item := range combinationsR {
 		operation := gocap.NewCombination(item.n, item.r, true)
-		result, _ := calculator.Calculate(operation)
+		result := calculator.Calculate(operation)
 		if result != item.result {
 			t.Errorf(miscalculation, "Combitaion", item.n, item.r, item.result, result)
 		}
@@ -80,7 +80,7 @@ func TestPermutationWithoutRepetition(t *testing.T) {
 
 	for _, item := range permutations {
 		operation := gocap.NewPermutation(item.n, item.r, false)
-		result, _ := calculator.Calculate(operation)
+		result := calculator.Calculate(operation)
 		if result != item.result {
 			t.Errorf(miscalculation, "Permutation", item.n, item.r, item.result, result)
 		}
@@ -93,7 +93,7 @@ func TestPermutationWithRepetition(t *testing.T) {
 
 	for _, item := range permutationsR {
 		operation := gocap.NewPermutation(item.n, item.r, true)
-		result, _ := calculator.Calculate(operation)
+		result := calculator.Calculate(operation)
 		if result != item.result {
 			t.Errorf(miscalculation, "Permutation", item.n, item.r, item.result, result)
 		}

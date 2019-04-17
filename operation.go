@@ -10,7 +10,7 @@ const (
 
 // Calculator defines the contract to calculate an operation
 type Calculator interface {
-	Calculate(*Operation) (int, error)
+	Calculate(*Operation) int
 }
 
 // Operation model
