@@ -8,7 +8,7 @@ import (
 
 const miscalculation = "The %s of (%d, %d) should be %d, %d instead"
 
-var withoutR = []struct {
+var combinations = []struct {
 	n      int
 	r      int
 	result int
@@ -18,7 +18,7 @@ var withoutR = []struct {
 	{16, 3, 560},
 }
 
-var withR = []struct {
+var combinationsR = []struct {
 	n      int
 	r      int
 	result int
@@ -28,11 +28,31 @@ var withR = []struct {
 	{5, 3, 35},
 }
 
+var permutations = []struct {
+	n      int
+	r      int
+	result int
+}{
+	{0, 0, 0},
+	{1, 1, 1},
+	{16, 3, 3360},
+}
+
+var permutationsR = []struct {
+	n      int
+	r      int
+	result int
+}{
+	{0, 0, 0},
+	{1, 1, 1},
+	{10, 3, 1000},
+}
+
 func TestCombinationWithoutRepetition(t *testing.T) {
 
 	calculator := gocap.NewCombinationCalculator()
 
-	for _, item := range withoutR {
+	for _, item := range combinations {
 		operation := gocap.NewCombination(item.n, item.r, false)
 		result, _ := calculator.Calculate(operation)
 		if result != item.result {
@@ -45,11 +65,37 @@ func TestCombinationWithRepetition(t *testing.T) {
 
 	calculator := gocap.NewCombinationCalculator()
 
-	for _, item := range withR {
+	for _, item := range combinationsR {
 		operation := gocap.NewCombination(item.n, item.r, true)
 		result, _ := calculator.Calculate(operation)
 		if result != item.result {
 			t.Errorf(miscalculation, "Combitaion", item.n, item.r, item.result, result)
+		}
+	}
+}
+
+func TestPermutationWithoutRepetition(t *testing.T) {
+
+	calculator := gocap.NewPermutationCalculator()
+
+	for _, item := range permutations {
+		operation := gocap.NewPermutation(item.n, item.r, false)
+		result, _ := calculator.Calculate(operation)
+		if result != item.result {
+			t.Errorf(miscalculation, "Permutation", item.n, item.r, item.result, result)
+		}
+	}
+}
+
+func TestPermutationWithRepetition(t *testing.T) {
+
+	calculator := gocap.NewPermutationCalculator()
+
+	for _, item := range permutationsR {
+		operation := gocap.NewPermutation(item.n, item.r, true)
+		result, _ := calculator.Calculate(operation)
+		if result != item.result {
+			t.Errorf(miscalculation, "Permutation", item.n, item.r, item.result, result)
 		}
 	}
 }

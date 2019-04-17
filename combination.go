@@ -16,17 +16,17 @@ func (c *CombinationCalculator) Calculate(operation *Operation) (int, error) {
 	}
 
 	if operation.Repetition {
-		return withRepetition(operation.N, operation.R), nil
+		return c.withRepetition(operation.N, operation.R), nil
 	}
 
-	return withoutRepetition(operation.N, operation.R), nil
+	return c.withoutRepetition(operation.N, operation.R), nil
 }
 
-func withoutRepetition(n int, r int) int {
+func (c *CombinationCalculator) withoutRepetition(n int, r int) int {
 	return fact(n) / (fact(r) * fact(n-r))
 }
 
-func withRepetition(n int, r int) int {
+func (c *CombinationCalculator) withRepetition(n int, r int) int {
 	return fact(r+n-1) / (fact(r) * fact(n-1))
 }
 
