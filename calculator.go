@@ -11,6 +11,10 @@ func (c *CombinationCalculator) Calculate(operation *Operation) (int, error) {
 		return 0, fmt.Errorf("Invalid operation")
 	}
 
+	if operation.N == 0 && operation.R == 0 {
+		return 0, nil
+	}
+
 	if operation.Repetition {
 		return withRepetition(operation.N, operation.R), nil
 	}
